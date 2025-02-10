@@ -1,0 +1,15 @@
+awk '{}' table.csv
+awk '{ print }' table.csv                                                                       - Print data
+awk '{ print NR, $0 }' table.csv                                                                - Print data with line number at column 0
+awk '{ if (NR > 1) print NR, $0 }' table.csv                                                    - Print data with line number at column 0 except the first row (Note: Line number stays the same)
+awk '/Rock/ { print }' table.csv                                                                - Print lines with the a "Rock"
+awk -F',' '{ print "[ " $1 " ] " $2 }' table.csv                                                - Split lines into fields
+awk -F',' '{ print "[ " $1 " ] " $2 }' table.csv | sort                                         - Perform sort on the lines splitted into fields
+awk -F',' '{ if ($5 ~ /Rock/) print $2 }' table.csv                                             - Print all songs in the Rock category
+awk -F',' '{ if ($5 ~ /Rock/) print $1 }' table.csv | sort -u                                   - Print all songs in the Rock category with unique Artist
+awk -F',' '{arist=$1; song=$2; printf("%25s : %20s\n", arist, song)}' table.csv                 - Storing data in variables and formatted output
+awk -F',' '{if ($1 ~ /[Jj]/) print $1 ", " $2}' table.csv                                       - Print the name and song of those entries whose artist name has a letter J
+awk -F',' '{if ($4 <1 ) print $2 " - " $3}' table.csv                                           - Print all the songs and the number of downloads whose price is less than 1 dollar
+awk -F',' '{if ($5 ~ /Classical/) sum+=$3} END {print "Classical: " sum}' table.csv             - How many downloads do the Classical songs have?
+awk -F',' '{if ($5 ~ /Pop/) earn+=($3*$4)} END {print "Pop: " earn}' table.csv                  - How much did the Pop downloads earned?
+awk -F',' '{if ($2 ~ /[Ii]/) earn+=($3*$4)} END {print "Total: " earn}' table.csv
