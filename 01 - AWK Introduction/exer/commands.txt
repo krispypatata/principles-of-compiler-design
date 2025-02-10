@@ -1,0 +1,47 @@
+1) Print all the countries in the Australia and Oceania region
+awk -F',' '{if ($1 ~ /Australia and Oceania/) print $2}' '10000 Sales Records.csv'
+
+2) Print all the countries in the Central America and the Caribbean region that starts with H
+awk -F',' '{if ($1 ~ /Central America and the Caribbean/ && $2 ~ /^H/) print $2}' '10000 Sales Records.csv'
+
+3) What are the items sold online to the Philippines?
+awk -F',' '{if ($2 ~ /Philippines/ && $4 ~ /Online/) print $3}' '10000 Sales Records.csv' | sort -u
+
+4) How many transactions/sales does Europe have?
+awk -F',' '{if ($1 ~ /Europe/) transactions+=1} END {print transactions}' '10000 Sales Records.csv'
+
+5) What is the total cost incurred by Japan on cosmetics?
+awk -F',' '{if ($2 ~ /Japan/ && $3 ~ /Cosmetics/) costs+=$13} END {printf("Total Costs of Cosmetics: %d\n", costs)}' '10000 Sales Records.csv'
+
+6) How many units of fruits and vegetables were sold to Canada?
+awk -F',' '{if ($2 ~ /Canada/ && ($3 ~ /Fruits|Vegetables/)) units+=$9} END {printf("Total Units: %d\n", units)}' '10000 Sales Records.csv'
+
+7) What are the countries who bought more than 9900 units of meat?
+awk -F',' '{if ($3 ~ /Meat/ && $9 > 9900) print $2}' '10000 Sales Records.csv'
+
+8) What is the total profit made from China from snacks?
+awk -F',' '{if ($2 ~ /China/ && $3 ~ /Snacks/) profit+=$14} END {printf("Total Profit: %.2f\n", profit)}' '10000 Sales Records.csv'
+
+9) Starting from the oldest, list the dates when clothes are ordered for South Africa? (Note: use sort options)
+awk -F',' '{if ($2 ~ /South Africa/ && $3 ~ /Clothes/) print $6}' '10000 Sales Records.csv' | sort -t "/" -k3n -k1n
+
+10) Print the country, item, and total profit of the transaction with the largest total profit
+awk -F',' 'BEGIN {x=0} {if ($14 > 0+x) x=$14; country=$2; item=$3;} END {print "Country: " country ", Item: " item ", Profit: " x}' '10000 Sales Records.csv'
+
+awk -F',' '{print $14}' '10000 Sales Records.csv' | sort -rn | echo $2
+
+
+
+awk -F',' '{print $14}' '10000 Sales Records.csv' | sort -n
+
+awk -F',' '{if ($14 > x) x=$14} END {print x}' '10000 Sales Records.csv'
+
+awk -F',' '{if (NR>1 && $14 > x) x=$14} END {print x}' '10000 Sales Records.csv'
+
+
+awk -F',' '{if (NR>1 && $14 > 1000000 && $14 > x) x=$14; y=$2} END {print x y}' '10000 Sales Records.csv'
+
+awk -F',' '$2 > max {max=$14; maxline=$2} END {print maxline}' '10000 Sales Records.csv'
+
+
+awk -F',' '{if (NR>1 && $14 > 1000000) print $2}' '10000 Sales Records.csv'
