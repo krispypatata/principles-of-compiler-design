@@ -9,9 +9,11 @@ import re
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 # Function for tokenizing a string of characters based on a set of token patterns.
 def lex(characters, token_exprs):
-    pos = 0             # Current position in the input string
-    tokens = []         # List to hold the tokenized output
-    line_number = 1     # Start with line number 1
+    pos = 0                 # Current position in the input string
+    tokens = []             # List to hold the tokenized output
+    line_number = 1         # Start with line number 1
+    column_number = 1       
+    last_newline_pos = -1   # Position of the last newline
 
     # Traverse through the contents of the input
     while pos < len(characters):
@@ -33,14 +35,24 @@ def lex(characters, token_exprs):
                     tokens.append(token)
 
                 # Update line count if a newline is encountered in the matched text
-                line_number += text.count('\n')
+                newline_count = text.count("\n")
+                if newline_count > 0:
+                    line_number += newline_count
+                    last_newline_pos = pos + text.rfind("\n")  # Find the position of the last newline in the matched text (to be used in resetting column number)
+                    column_number = pos - last_newline_pos
+                else:
+                    column_number += len(text)
+
+                # Move the position to the end of the matched token
+                pos = match.end(0)
 
                  # Exit the loop once a match is found
                 break
 
         # If there's no match found, then there's an error
         if not match:
-            sys.stderr.write('Illegal character: %s at %d\n' % (characters[pos], line_number))
+            column_number = pos - last_newline_pos  # Update column number with its correct position
+            sys.stderr.write(f"Illegal character '{characters[pos]}' at line {line_number}, column {column_number}\n")
             sys.exit(1)
         
         # If match found, move the position pointer to the end of the matched text
@@ -57,7 +69,7 @@ def lex(characters, token_exprs):
 # Keywords and Data Types
 KEYWORD_MAIN = 'Main Function'
 KEYWORD_RETURN = 'Return Statement'
-DTYPE_INTEGER = 'Integer Data Type'
+TYPE_INTEGER = 'Integer Type'
 
 # Operators
 OP_ASSIGN = 'Assignment Operator'
@@ -94,7 +106,7 @@ TOKEN_PATTERNS = [
     (bound('main'), KEYWORD_MAIN),
     (bound('return'), KEYWORD_RETURN),
     (bound('printf'), FUNC_PRINT),
-    (bound('int'), DTYPE_INTEGER),
+    (bound('int'), TYPE_INTEGER),
     (bound('='), OP_ASSIGN),
     (r'\+', OP_ADDITION),
     (r';', DELIM_SEMICOLON),
@@ -104,9 +116,8 @@ TOKEN_PATTERNS = [
     (r'\{', BRACE_OPEN),
     (r'\}', BRACE_CLOSE),
     (r'-?[0-9]+', LITERAL_INTEGER), 
-    # (r'"[^"]*"', LITERAL_STRING),
-    (r'"([^"\\]|\\.)*"', LITERAL_STRING),   # Also allow escaped quotes inside strings
-    (r"'([^'\\]|\\.)'", LITERAL_CHAR),    # Chars 
+    (r'"([^"\\]|\\.)*"', LITERAL_STRING),   # Also allow escaped double quotes inside strings
+    (r"'([^'\\]|\\.)'", LITERAL_CHAR),      # Also allow escaped single quotes inside characters
     (r'[a-zA-Z_][a-zA-Z0-9_]*', IDENTIFIER),
 ]
 
@@ -120,11 +131,22 @@ def tokenize(characters):
 # ────────────────────────────────────────────────────────────────────────────────────────────────────────────
 # For testing the implementation of the lexer
 if __name__ == '__main__':
+    # Check for incorrect usage of the program
+    if len(sys.argv) < 2:
+        print("Usage: python GABINETE_exer2.py <input_file>")
+        sys.exit(1)
+
     filename = sys.argv[1]
-    # filename = 'sample1.txt'   # Override arguments
-    file = open(filename)
-    characters = file.read()
-    file.close()
+    # filename = 'sample1.txt'   # Override arguments; for testing
+
+    characters = None
+    try:
+        file = open(filename, 'r')
+        characters = file.read()
+        file.close()  # Needed because 'with' is not used
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
+        sys.exit(1)
 
     print('INPUT:')
     print("-"*60)

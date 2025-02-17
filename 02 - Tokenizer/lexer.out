@@ -1,11 +1,11 @@
 TOKEN               TAG                           
 ------------------------------------------------------------
-int                 Integer Data Type             
+int                 Integer Type                  
 main                Main Function                 
 (                   Opening Parenthesis           
 )                   Closing Parenthesis           
 {                   Opening Curly Brace           
-int                 Integer Data Type             
+int                 Integer Type                  
 a                   Identifier                    
 =                   Assignment Operator           
 10                  Integer Literal               
