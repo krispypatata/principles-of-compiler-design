@@ -1,0 +1,5 @@
+# Ignore all __pycache__ directories and their contents
+**/__pycache__/
+
+# Ignore the temp folder at any level
+**/temp/

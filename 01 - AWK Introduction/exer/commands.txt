@@ -26,22 +26,4 @@ awk -F',' '{if ($2 ~ /China/ && $3 ~ /Snacks/) profit+=$14} END {printf("Total P
 awk -F',' '{if ($2 ~ /South Africa/ && $3 ~ /Clothes/) print $6}' '10000 Sales Records.csv' | sort -t "/" -k3n -k1n
 
 10) Print the country, item, and total profit of the transaction with the largest total profit
-awk -F',' 'BEGIN {x=0} {if ($14 > 0+x) x=$14; country=$2; item=$3;} END {print "Country: " country ", Item: " item ", Profit: " x}' '10000 Sales Records.csv'
-
-awk -F',' '{print $14}' '10000 Sales Records.csv' | sort -rn | echo $2
-
-
-
-awk -F',' '{print $14}' '10000 Sales Records.csv' | sort -n
-
-awk -F',' '{if ($14 > x) x=$14} END {print x}' '10000 Sales Records.csv'
-
-awk -F',' '{if (NR>1 && $14 > x) x=$14} END {print x}' '10000 Sales Records.csv'
-
-
-awk -F',' '{if (NR>1 && $14 > 1000000 && $14 > x) x=$14; y=$2} END {print x y}' '10000 Sales Records.csv'
-
-awk -F',' '$2 > max {max=$14; maxline=$2} END {print maxline}' '10000 Sales Records.csv'
-
-
-awk -F',' '{if (NR>1 && $14 > 1000000) print $2}' '10000 Sales Records.csv'
+awk -F',' 'BEGIN {x=0} {if ($14 > 0+x) {x=$14; country=$2; item=$3;}} END {print "Country: " country ", Item: " item ", Profit: " x}' '10000 Sales Records.csv'

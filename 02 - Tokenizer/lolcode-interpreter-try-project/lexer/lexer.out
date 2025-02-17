@@ -1,0 +1,54 @@
+TOKEN               TAG                           LINE_NUMBER
+------------------------------------------------------------
+HAI                 Program Start Delimeter       1         
+HOW IZ I            Function Start Delimeter      2         
+POWERTWO            Identifier                    2         
+YR                  Parameter Variable            2         
+NUM                 Identifier                    2         
+AN YR               Additional Parameter Variable 2         
+Y                   Identifier                    2         
+BOTH SAEM           Equality Operator             4         
+NUM                 Identifier                    4         
+AN                  Operand Connector             4         
+0                   Integer                       4         
+O RLY?              Conditional Start Delimeter   5         
+YA RLY              If Clause                     6         
+FOUND YR            Function Return Value         7         
+1                   Integer                       7         
+OIC                 Conditional End Delimeter     8         
+I HAS A             Variable Declaration          11        
+INDEX               Identifier                    11        
+ITZ                 Variable Initialization       11        
+0                   Integer                       11        
+I HAS A             Variable Declaration          12        
+TOTAL               Identifier                    12        
+ITZ                 Variable Initialization       12        
+1.37                Float                         12        
+IM IN YR            Loop Start Delimeter          13        
+LOOP                Identifier                    13        
+UPPIN               Increment Operator            13        
+YR                  Parameter Variable            13        
+INDEX               Identifier                    13        
+TIL                 Until Loop                    13        
+BOTH SAEM           Equality Operator             13        
+INDEX               Identifier                    13        
+AN                  Operand Connector             13        
+NUM                 Identifier                    13        
+TOTAL               Identifier                    14        
+R                   Assignment Keyword            14        
+PRODUKT OF          Multiplication Operator       14        
+TOTAL               Identifier                    14        
+AN                  Operand Connector             14        
+2                   Integer                       14        
+IM OUTTA YR         Loop End Delimeter            15        
+LOOP                Identifier                    15        
+FOUND YR            Function Return Value         22        
+TOTAL               Identifier                    22        
+IF U SAY SO         Function End Delimeter        23        
+VISIBLE             Print Statement               25        
+I IZ                Function Call                 25        
+POWERTWO            Identifier                    25        
+YR                  Parameter Variable            25        
+4                   Integer                       25        
+MKAY                Statement End Delimeter       25        
+KTHXBYE             Program End Delimeter         26        

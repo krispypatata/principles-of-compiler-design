@@ -1,0 +1,29 @@
+TOKEN               TAG                           
+------------------------------------------------------------
+int                 Data Type                     
+main                Start of the Main program     
+(                   Open Parenthesis              
+)                   Close Parenthesis             
+{                   Open Curly Bracket            
+int                 Data Type                     
+a                   Identifier                    
+=                   Assignment Operator           
+10                  Integer                       
+,                   Statement Separator           
+b                   Identifier                    
+=                   Assignment Operator           
+20                  Integer                       
+;                   Statement Delimeter           
+printf              Print Function                
+(                   Open Parenthesis              
+"sum is :%d"        String                        
+,                   Statement Separator           
+a                   Identifier                    
++                   Addition Operator             
+b                   Identifier                    
+)                   Close Parenthesis             
+;                   Statement Delimeter           
+return              Return Keyword                
+0                   Integer                       
+;                   Statement Delimeter           
+}                   Close Curly Bracket           
