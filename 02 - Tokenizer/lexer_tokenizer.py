@@ -1,54 +1,61 @@
 from lexer import *
 
-# Proram keywords, variables
-MAIN = 'Start of the Main program'
-DATA_TYPE = "Data Type"
-INTEGER = 'Integer'
-STRING = 'String'
-ASSIGNMENT = 'Assignment Operator'
+# Keywords and Data Types
+KEYWORD_MAIN = 'Main Function'
+KEYWORD_RETURN = 'Return Statement'
+DTYPE_INTEGER = 'Integer Data Type'
 
+# Operators
+OP_ASSIGN = 'Assignment Operator'
+OP_ADDITION = 'Addition Operator'
 
-SEMICOLON = 'Statement Delimeter'
-COMMA = 'Statement Separator'
+# Delimiters
+DELIM_SEMICOLON = 'Statement Terminator'
+DELIM_COMMA = 'Comma Separator'
 
-OPEN_PAREN = 'Open Parenthesis'
-CLOSE_PAREN = 'Close Parenthesis'
+# Grouping Symbols
+PAREN_OPEN = 'Opening Parenthesis'
+PAREN_CLOSE = 'Closing Parenthesis'
+BRACE_OPEN = 'Opening Curly Brace'
+BRACE_CLOSE = 'Closing Curly Brace'
 
-OPEN_CURL = 'Open Curly Bracket'
-CLOSE_CURL = 'Close Curly Bracket'
-ADDITION = 'Addition Operator'
+# Functions
+FUNC_PRINT = 'Print Function'
 
-RETURN = 'Return Keyword'
-
-# Statements
-PRINTF = 'Print Function'
+# Literals
+LITERAL_INTEGER = 'Integer Literal'
+LITERAL_STRING = 'String Literal'
+LITERAL_CHAR = 'Character Literal'
 
 # Identifier
 IDENTIFIER = 'Identifier'
 
-# Make sure that the pattern matches as a whole word, excluding it from being part of larger words.
+# A function to make sure that a pattern matches as a whole word—preventing it from being part of larger words
 def bound(pattern):
     return rf'(?<!\w){pattern}(?!\w)'
 
-token_exprs = [
+# Token expressions
+TOKEN_PATTERNS = [
     (r'[ \n\t]+', None),  # Ignore whitespace(s)
-    (bound('main'), MAIN),
-    (bound('='), ASSIGNMENT),
-    (r'\+', ADDITION),
-    (r';', SEMICOLON),
-    (r',', COMMA),
-    (r'\(', OPEN_PAREN),
-    (r'\)', CLOSE_PAREN),
-    (r'\{', OPEN_CURL),
-    (r'\}', CLOSE_CURL),
-    (bound('return'), RETURN),
-    (bound('printf'), PRINTF),
-    (r'-?[0-9]+', INTEGER), 
-    (r'"[^"]*"', STRING),                    # String
-    (bound('int'), DATA_TYPE),               # Data type
-    (r'[a-zA-Z][a-zA-Z0-9_]*', IDENTIFIER),  # Identifier
+    (bound('main'), KEYWORD_MAIN),
+    (bound('return'), KEYWORD_RETURN),
+    (bound('printf'), FUNC_PRINT),
+    (bound('int'), DTYPE_INTEGER),
+    (bound('='), OP_ASSIGN),
+    (r'\+', OP_ADDITION),
+    (r';', DELIM_SEMICOLON),
+    (r',', DELIM_COMMA),
+    (r'\(', PAREN_OPEN),
+    (r'\)', PAREN_CLOSE),
+    (r'\{', BRACE_OPEN),
+    (r'\}', BRACE_CLOSE),
+    (r'-?[0-9]+', LITERAL_INTEGER), 
+    # (r'"[^"]*"', LITERAL_STRING),
+    (r'"([^"\\]|\\.)*"', LITERAL_STRING),   # Also allow escaped quotes inside strings
+    (r"'([^'\\]|\\.)'", LITERAL_CHAR),    # Chars 
+    (r'[a-zA-Z_][a-zA-Z0-9_]*', IDENTIFIER),
 ]
 
 
 def tokenize(characters):
-    return lex(characters, token_exprs)
+    return lex(characters, TOKEN_PATTERNS)

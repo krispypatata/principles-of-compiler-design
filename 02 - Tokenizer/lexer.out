@@ -1,29 +1,31 @@
 TOKEN               TAG                           
 ------------------------------------------------------------
-int                 Data Type                     
-main                Start of the Main program     
-(                   Open Parenthesis              
-)                   Close Parenthesis             
-{                   Open Curly Bracket            
-int                 Data Type                     
+int                 Integer Data Type             
+main                Main Function                 
+(                   Opening Parenthesis           
+)                   Closing Parenthesis           
+{                   Opening Curly Brace           
+int                 Integer Data Type             
 a                   Identifier                    
 =                   Assignment Operator           
-10                  Integer                       
-,                   Statement Separator           
+10                  Integer Literal               
+,                   Comma Separator               
 b                   Identifier                    
 =                   Assignment Operator           
-20                  Integer                       
-;                   Statement Delimeter           
+20                  Integer Literal               
+;                   Statement Terminator          
 printf              Print Function                
-(                   Open Parenthesis              
-"sum is :%d"        String                        
-,                   Statement Separator           
+(                   Opening Parenthesis           
+"sum is :%d"        String Literal                
+,                   Comma Separator               
 a                   Identifier                    
 +                   Addition Operator             
 b                   Identifier                    
-)                   Close Parenthesis             
-;                   Statement Delimeter           
-return              Return Keyword                
-0                   Integer                       
-;                   Statement Delimeter           
-}                   Close Curly Bracket           
+)                   Closing Parenthesis           
+;                   Statement Terminator          
+return              Return Statement              
+0                   Integer Literal               
+;                   Statement Terminator          
+}                   Closing Curly Brace           
+
+TOTAL:              27

@@ -1,7 +1,0 @@
-program :            arithmetic_binary_exprssion | arithmetic_term
-
-arithmetic_binary_operation     :   (PRODUKT_OF | QUOSHUNT_OF | SUM_OF | DIFF_OF | BIGGR_OF | SMALLR_OF) arithmetic_expression  AN arithmetic_expression 
-
-arithmetic_factor: arithmetic_binary_operation | arithmetic_term
-
-arithmetic_term     :   INTEGER | FLOAT
