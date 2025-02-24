@@ -1,0 +1,31 @@
+before 2.8 or 3 (lex version)
+
+**
+GENERAL FORMAT
+{definitions}
+%%              # REQUIRED
+{rules}         # REQUIRED
+%%
+{user subroutines}
+
+**
+RULES: line-oriented
+<reg_expr> <whitespace> <action>
+<reg_expr>: starts at the beginning of the line, continues up to the first unescaped
+whitespace
+<action>: a single C statement
+(multiple statements should be enclosed in brackets{})
+
+unmatched input characters: copied to stdout
+
+**
+Some Lex variables
+• yylex() - matches the input stream against the table of regular expressions supplied
+          - Carries out the associated action when a match is found
+• yytext – a character array that contains the actual string that match a pattern
+• yyleng – the number of characters matched
+• yyval – value associated with token
+• yyin – input file
+• yyout – output file
+
+
