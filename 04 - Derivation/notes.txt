@@ -13,9 +13,8 @@ parentheses i coconsider
 
 
 other sample input:
-
-E -> T F
+E -> T E'
 E' -> + T E' | ε
 T -> F T'
-T' -> * 
-
+T' -> * F T' | ε
+F -> ( E ) | id

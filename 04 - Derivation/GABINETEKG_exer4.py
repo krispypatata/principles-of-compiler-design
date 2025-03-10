@@ -31,9 +31,9 @@ stringToDerive = "aa+a*"
 
 terminals = {"a" : "S"}
 
-print(S)
+# print(S)
 
-sys.exit()
+# sys.exit()
 
 ############################################################
 currentDerivation = stringToDerive
