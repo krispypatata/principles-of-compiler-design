@@ -1,0 +1,21 @@
+CAPITAL FOR NONTERMINALS
+small letter for terminals
+
+
+
+arithmetic operations
+parentheses i coconsider
+
+# input.txt contains the inputs for the program
+# IMPORTANT: Don't delete '-1' at the end of the input file (This indicates end of file)
+# List all down grammar rules (1 grammar rule for each line)
+# Write the string to derive before the line with '-1'
+
+
+other sample input:
+
+E -> T F
+E' -> + T E' | ε
+T -> F T'
+T' -> * 
+
