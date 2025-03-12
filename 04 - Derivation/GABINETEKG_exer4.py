@@ -146,13 +146,13 @@ def main():
     for index, stringToDerive in enumerate(stringsToDerive):
         steps = leftmostDerivation(grammar, startSymbol, stringToDerive)
 
-        print("String to derive:", stringsToDerive)
+        print("String to derive:", stringToDerive)
 
-        print("\nDerivation:")
+        print("\nLeftmost derivation:")
         for iStep, step in enumerate(steps):
             # Arrow for each step besides the first step (starting symbol)
-            # if iStep > 0:
-            #     print("->", end=" ")
+            if iStep > 0:
+                print("->", end=" ")
             print(step)
 
         # Print new line between each iteration

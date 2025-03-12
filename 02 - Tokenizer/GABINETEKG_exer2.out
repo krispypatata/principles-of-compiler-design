@@ -1,0 +1,11 @@
+TOKEN               TAG                           
+------------------------------------------------------------
+int                 Integer Type                  
+max                 Identifier                    
+(                   Opening Parenthesis           
+int                 Integer Type                  
+i                   Identifier                    
+)                   Closing Parenthesis           
+;                   Statement Terminator          
+
+TOTAL:              7

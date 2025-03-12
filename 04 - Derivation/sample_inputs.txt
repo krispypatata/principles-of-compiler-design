@@ -1,0 +1,53 @@
+# Just and copy and paste into input.txt
+
+sample input 1:
+'''
+Productions
+S -> S S + | S S * | a
+Strings to derive
+a a + a *
+a a *
+'''
+
+expected sample output 1:
+'''
+S
+S S*
+S S + S*
+a S + S*
+a a + S*
+a a + a *
+
+S
+S S *
+a S *
+a a *
+'''
+
+sample input 2:
+'''
+Productions
+A -> C B
+B -> + C B | #
+C -> E D
+D -> * E D | #
+E -> ( A ) | n
+Strings to derive
+n + n * n
+'''
+
+expected sample output 2:
+'''
+A  
+C B  
+E D B  
+n D B  
+n # B  
+n # + C B  
+n # + E D B  
+n # + n D B  
+n # + n * E D B  
+n # + n * n D B  
+n # + n * n # B  
+n # + n * n # #
+'''

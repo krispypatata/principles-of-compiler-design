@@ -1,3 +1,8 @@
-S -> S S + | S S * | a
-a a + a *
--1
+Productions
+A -> C B
+B -> + C B | #
+C -> E D
+D -> * E D | #
+E -> ( A ) | n
+Strings to derive
+n + n * n
